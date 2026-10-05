@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rakesh Pedada — Engineering Portfolio</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-outline" id="cursorOutline"></div>
+  <div class="cursor-badge" id="cursorBadge">SYSTEM_OK</div>
+
+  <!-- HUD Header Navigation -->
+  <header class="hud-header">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo">
+        <span class="symbol">&lt;RP/&gt;</span>
+        <span class="text">RAKESH PEDADA</span>
+      </a>
+      
+      <nav class="nav-links">
+        <a href="#about" class="nav-link"><span class="num">01.</span> ABOUT</a>
+        <a href="#powertwinai" class="nav-link"><span class="num">02.</span> POWERTWINAI</a>
+        <a href="#iot-project" class="nav-link"><span class="num">03.</span> IOT SYSTEM</a>
+        <a href="#skills" class="nav-link"><span class="num">04.</span> MATRIX</a>
+        <a href="#terminal" class="nav-link"><span class="num">05.</span> TERMINAL</a>
+      </nav>
+
+      <div class="nav-status">
+        <span class="status-indicator"></span>
+        <span class="status-text">NIT NAGALAND // EEE</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+      <div class="hero-grid-bg"></div>
+      <div class="hero-content">
+        <div class="hud-tag"><i class="fa-solid fa-microchip"></i> ELECTRICAL &amp; ELECTRONICS ENGINEER</div>
+        <h1 class="hero-title">Rakesh Pedada</h1>
+        <p class="hero-subtitle">
+          3rd Year B.Tech Student at <strong>NIT Nagaland</strong>. Building at the intersection of 
+          <span class="highlight-cyan">Digital Twins</span>, <span class="highlight-purple">3D Photogrammetry</span>, 
+          and <span class="highlight-cyan">Embedded IoT Hardware</span>.
+        </p>
+
+        <div class="hero-metrics">
+          <div class="metric-card">
+            <span class="metric-val">8.32</span>
+            <span class="metric-lbl">CURRENT CGPA</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-val">3rd Yr</span>
+            <span class="metric-lbl">5th SEMESTER</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-val">IEEE</span>
+            <span class="metric-lbl">STUDENT MEMBER</span>
+          </div>
+        </div>
+
+        <div class="hero-cta-group">
+          <a href="#powertwinai" class="btn btn-primary"><i class="fa-solid fa-cube"></i> Explore Powertwinai</a>
+          <a href="#terminal" class="btn btn-secondary"><i class="fa-solid fa-terminal"></i> Open CLI HUD</a>
+          <a href="https://github.com/RakeshPedada" target="_blank" class="btn btn-outline"><i class="fa-brands fa-github"></i> GitHub</a>
+          <a href="https://linkedin.com/in/pedada-rakesh" target="_blank" class="btn btn-outline"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About & Identity Section -->
+    <section id="about" class="section-container">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <h2>Engineering Identity</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
+          <h3>Electrical Systems &amp; Hardware</h3>
+          <p>Proficient in Core Electrical Engineering concepts including Electrical Machines, Power Systems, Circuit Theory, and Electromagnetic Fields. Experienced with MATLAB &amp; Simulink design.</p>
+        </div>
+
+        <div class="about-card">
+          <div class="card-icon"><i class="fa-solid fa-eye"></i></div>
+          <h3>3D Vision &amp; Digital Twins</h3>
+          <p>Primary owner and lead developer of <strong>Powertwinai</strong>. Working with COLMAP Structure-from-Motion, SIFT feature extraction, and Open3D point-cloud reconstruction.</p>
+        </div>
+
+        <div class="about-card">
+          <div class="card-icon"><i class="fa-solid fa-network-wired"></i></div>
+          <h3>Embedded IoT &amp; Sensors</h3>
+          <p>Building practical micro-controller applications with ESP32 and Arduino, integrating signal processing and real-time hardware actuation mechanisms.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Powertwinai Flagship Project -->
+    <section id="powertwinai" class="section-container">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <h2>Flagship Project: Powertwinai</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="project-showcase">
+        <div class="project-info">
+          <div class="badge-row">
+            <span class="badge badge-lead"><i class="fa-solid fa-crown"></i> PROJECT OWNER &amp; LEAD</span>
+            <span class="badge">3D Photogrammetry</span>
+            <span class="badge">Digital Twin</span>
+          </div>
+          <h3>AI-Assisted Equipment Health &amp; Audit System</h3>
+          <p>
+            <strong>Powertwinai</strong> transforms multi-view physical images of industrial power equipment (transformers, conductors, switchgear) into high-fidelity 3D digital twin representations and automated health audit reports.
+          </p>
+
+          <div class="pipeline-box">
+            <h4><i class="fa-solid fa-diagram-project"></i> Reconstruction Pipeline</h4>
+            <ul class="pipeline-list">
+              <li><i class="fa-solid fa-camera"></i> <span>Multi-View Image Preprocessing &amp; Filtering</span></li>
+              <li><i class="fa-solid fa-sitemap"></i> <span>COLMAP SIFT Feature Matching &amp; Structure-from-Motion</span></li>
+              <li><i class="fa-solid fa-cubes"></i> <span>Open3D Point-Cloud &amp; Mesh Reconstruction</span></li>
+              <li><i class="fa-solid fa-heart-pulse"></i> <span>AI Health Inspection &amp; Anomaly Detection</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 3D Interactive Canvas Box -->
+        <div class="interactive-viewer-card">
+          <div class="viewer-header">
+            <span><i class="fa-solid fa-cubes"></i> 3D DIGITAL TWIN VIEWER</span>
+            <div class="viewer-controls">
+              <button class="view-btn active" id="btnWireframe"><i class="fa-solid fa-border-all"></i> Wireframe</button>
+              <button class="view-btn" id="btnHeatmap"><i class="fa-solid fa-fire"></i> Thermal AI</button>
+              <button class="view-btn" id="btnPoints"><i class="fa-solid fa-braille"></i> SIFT Points</button>
+            </div>
+          </div>
+
+          <div id="threeContainer" class="three-container"></div>
+
+          <div class="viewer-footer">
+            <span id="twinStatusText"><i class="fa-solid fa-circle-notch fa-spin"></i> ROTATING 3D EQUIPMENT MODEL...</span>
+            <button class="btn btn-sm" id="btnResetCam">Reset View</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IoT Sound Project -->
+    <section id="iot-project" class="section-container">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <h2>IoT Project: Secret Sound Unlock Door</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="iot-grid">
+        <div class="iot-info">
+          <h3>Sound Sequence Actuation Mechanism</h3>
+          <p>An ESP32-powered security prototype that captures acoustic frequency patterns through a sound sensor and triggers a servo motor mechanism upon detecting the exact predefined sound sequence.</p>
+
+          <div class="tech-stack-pills">
+            <span>ESP32</span>
+            <span>Servo Motor</span>
+            <span>Sound Sensor</span>
+            <span>Python</span>
+            <span>Embedded C</span>
+          </div>
+
+          <div class="iot-achievement">
+            <i class="fa-solid fa-trophy"></i>
+            <div>
+              <strong>3rd Place Winner</strong>
+              <span>College IoT Project Competition, NIT Nagaland</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Sound Simulator -->
+        <div class="sound-sim-card">
+          <div class="sim-header">
+            <span><i class="fa-solid fa-wave-square"></i> ACOUSTIC SEQUENCE SIMULATOR</span>
+            <span class="sim-status" id="lockStatus"><i class="fa-solid fa-lock"></i> SERVO: LOCKED</span>
+          </div>
+
+          <div class="canvas-wrapper">
+            <canvas id="soundWaveCanvas" width="400" height="120"></canvas>
+          </div>
+
+          <div class="sim-controls">
+            <p>Tap the pulse button to simulate rhythm sequence matching:</p>
+            <div class="btn-group">
+              <button class="btn btn-primary" id="btnTapPulse"><i class="fa-solid fa-fingerprint"></i> Tap Sound Rhythm</button>
+              <button class="btn btn-outline" id="btnResetLock"><i class="fa-solid fa-rotate-left"></i> Reset Lock</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills & Coursework Matrix -->
+    <section id="skills" class="section-container">
+      <div class="section-header">
+        <span class="section-num">04</span>
+        <h2>Skills &amp; Coursework Matrix</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="matrix-grid">
+        <div class="matrix-col">
+          <h3><i class="fa-solid fa-code"></i> Languages &amp; Frameworks</h3>
+          <div class="skill-pills">
+            <span class="skill-tag">C</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">MATLAB</span>
+            <span class="skill-tag">Simulink</span>
+            <span class="skill-tag">Streamlit</span>
+            <span class="skill-tag">OpenCV</span>
+            <span class="skill-tag">Open3D</span>
+          </div>
+        </div>
+
+        <div class="matrix-col">
+          <h3><i class="fa-solid fa-microchip"></i> Hardware &amp; Embedded</h3>
+          <div class="skill-pills">
+            <span class="skill-tag">ESP32</span>
+            <span class="skill-tag">Arduino</span>
+            <span class="skill-tag">Servo Actuators</span>
+            <span class="skill-tag">Acoustic Sensors</span>
+            <span class="skill-tag">Hardware Interfaces</span>
+          </div>
+        </div>
+
+        <div class="matrix-col">
+          <h3><i class="fa-solid fa-book-open"></i> EEE Core Coursework</h3>
+          <div class="skill-pills">
+            <span class="skill-tag core">Electrical Machines</span>
+            <span class="skill-tag core">Circuit Theory</span>
+            <span class="skill-tag core">Electromagnetic Fields</span>
+            <span class="skill-tag core">Digital Electronics</span>
+            <span class="skill-tag core">Power Systems</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Leadership & Mentorship -->
+    <section class="section-container">
+      <div class="section-header">
+        <span class="section-num">05</span>
+        <h2>Leadership &amp; Responsibility</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="leadership-grid">
+        <div class="leadership-card">
+          <div class="lead-role">PUBLICITY SECRETARY</div>
+          <h4>Event Promotion &amp; Creative Direction</h4>
+          <p>Scripted and directed official promotional reels, coordinated inter-college invitations, and led outreach initiatives across institution networks.</p>
+        </div>
+
+        <div class="leadership-card">
+          <div class="lead-role">TECHNICAL MENTOR</div>
+          <h4>Project Direction &amp; Delegation</h4>
+          <p>Mentored junior students assigned by faculty, delegating UI and image preprocessing tasks while maintaining primary system architecture control for Powertwinai.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Terminal CLI Section -->
+    <section id="terminal" class="section-container">
+      <div class="section-header">
+        <span class="section-num">06</span>
+        <h2>Interactive Command Terminal HUD</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="terminal-card">
+        <div class="terminal-bar">
+          <div class="term-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <span class="term-title">rakesh@nit-nagaland-eee:~</span>
+        </div>
+
+        <div class="terminal-body" id="termOutput">
+          <p class="term-line welcome">Welcome to Rakesh Pedada's Terminal Interface v2.0.4.</p>
+          <p class="term-line">Type <span class="term-cmd">help</span> for available commands.</p>
+        </div>
+
+        <div class="terminal-input-row">
+          <span class="term-prompt">rakesh$&nbsp;</span>
+          <input type="text" id="termInput" placeholder="type a command (e.g. powertwin, skills, cgpa, clear)..." autocomplete="off">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-info">
+        <h3>Rakesh Pedada</h3>
+        <p>B.Tech Electrical &amp; Electronics Engineering — NIT Nagaland</p>
+        <p class="loc"><i class="fa-solid fa-location-dot"></i> Visakhapatnam, Andhra Pradesh // Chumukedima, Nagaland</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="mailto:dileshwarao02@gmail.com"><i class="fa-solid fa-envelope"></i> dileshwarao02@gmail.com</a>
+        <a href="https://linkedin.com/in/pedada-rakesh" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/RakeshPedada" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+      </div>
+    </div>
+    <div class="footer-copy">
+      &copy; 2026 Rakesh Pedada. Designed for High Performance &amp; Engineering Research.
+    </div>
+  </footer>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>
