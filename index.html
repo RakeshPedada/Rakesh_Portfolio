@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rakesh Pedada | Electrical Engineering & AI Pioneer</title>
     
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -15,7 +16,7 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Three.js CDN -->
+    <!-- Three.js 3D Engine CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <script>
@@ -24,15 +25,15 @@
             theme: {
                 extend: {
                     colors: {
-                        obsidian: '#070a12',
-                        'obsidian-card': '#0e1424',
-                        'obsidian-light': '#162036',
-                        'cyan-glow': '#00f2fe',
-                        'cyan-accent': '#4facfe',
-                        'amber-glow': '#f7b731',
-                        'amber-accent': '#ff9f43',
-                        'purple-glow': '#8b5cf6',
-                        'indigo-accent': '#5f27cd'
+                        obsidian: '#06080d',
+                        'obsidian-card': '#0c101a',
+                        'obsidian-light': '#121826',
+                        'cyan-glow': '#00f0ff',
+                        'cyan-accent': '#00a8ff',
+                        'amber-glow': '#ffb703',
+                        'amber-accent': '#fb8500',
+                        'purple-glow': '#a855f7',
+                        'emerald-glow': '#10b981'
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -42,16 +43,12 @@
                     animation: {
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'float': 'float 6s ease-in-out infinite',
-                        'glow-pulse': 'glowPulse 2s ease-in-out infinite alternate',
+                        'spin-slow': 'spin 12s linear infinite',
                     },
                     keyframes: {
                         float: {
                             '0%, 100%': { transform: 'translateY(0px)' },
                             '50%': { transform: 'translateY(-10px)' },
-                        },
-                        glowPulse: {
-                            '0%': { boxShadow: '0 0 10px rgba(0, 242, 254, 0.2)' },
-                            '100%': { boxShadow: '0 0 25px rgba(0, 242, 254, 0.6)' }
                         }
                     }
                 }
@@ -61,10 +58,21 @@
 
     <style>
         body {
-            background-color: #070a12;
+            background-color: #06080d;
             color: #e2e8f0;
             overflow-x: hidden;
             font-family: 'Inter', sans-serif;
+            cursor: default;
+        }
+
+        /* Hide native cursor on desktop to prioritize custom mechanical cursor */
+        @media (hover: hover) and (pointer: fine) {
+            a, button, input, textarea, select, [data-cursor], .interactive-target {
+                cursor: none !important;
+            }
+            body {
+                cursor: none !important;
+            }
         }
 
         /* Custom Scrollbar */
@@ -72,107 +80,210 @@
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #070a12;
+            background: #06080d;
         }
         ::-webkit-scrollbar-thumb {
             background: #1e293b;
             border-radius: 4px;
-            border: 1px solid rgba(0, 242, 254, 0.2);
+            border: 1px solid rgba(0, 240, 255, 0.2);
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #00f2fe;
+            background: #00f0ff;
         }
 
-        /* Cyberpunk Grid Background Overlay */
+        /* Cyber Wireframe Grid Overlay */
         .cyber-grid {
             background-image: 
-                linear-gradient(to right, rgba(0, 242, 254, 0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0, 242, 254, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
+                linear-gradient(to right, rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+            background-size: 36px 36px;
         }
 
         /* Glassmorphism Panels */
         .glass-panel {
-            background: rgba(14, 20, 36, 0.75);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 242, 254, 0.15);
+            background: rgba(12, 16, 26, 0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 240, 255, 0.15);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
         .glass-panel:hover {
-            border-color: rgba(0, 242, 254, 0.35);
+            border-color: rgba(0, 240, 255, 0.4);
         }
 
         .glass-panel-amber {
-            background: rgba(14, 20, 36, 0.75);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(247, 183, 49, 0.25);
+            background: rgba(12, 16, 26, 0.8);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 183, 3, 0.25);
         }
         .glass-panel-amber:hover {
-            border-color: rgba(247, 183, 49, 0.5);
+            border-color: rgba(255, 183, 3, 0.5);
         }
 
-        /* Glow effects */
+        /* Text Glow Effects */
         .text-glow-cyan {
-            text-shadow: 0 0 12px rgba(0, 242, 254, 0.5);
+            text-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
         }
         .text-glow-amber {
-            text-shadow: 0 0 12px rgba(247, 183, 49, 0.5);
+            text-shadow: 0 0 15px rgba(255, 183, 3, 0.6);
         }
 
-        #hero-canvas, #twin-canvas {
-            width: 100%;
-            height: 100%;
-            display: block;
+        /* Custom Cursor Elements */
+        #cursor-dot {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 6px;
+            background-color: #00f0ff;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px #00f0ff;
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+
+        #cursor-ring {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 38px;
+            height: 38px;
+            border: 1px solid rgba(0, 240, 255, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: width 0.25s ease-out, height 0.25s ease-out, border-color 0.25s, transform 0.05s linear;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Mechanical Corner Brackets inside cursor ring */
+        .cursor-bracket {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-color: #00f0ff;
+            border-style: solid;
+            transition: all 0.2s ease;
+        }
+        .cursor-tl { top: -2px; left: -2px; border-width: 1.5px 0 0 1.5px; }
+        .cursor-tr { top: -2px; right: -2px; border-width: 1.5px 1.5px 0 0; }
+        .cursor-bl { bottom: -2px; left: -2px; border-width: 0 0 1.5px 1.5px; }
+        .cursor-br { bottom: -2px; right: -2px; border-width: 0 1.5px 1.5px 0; }
+
+        /* Custom Contextual Cursor Tooltip Badge */
+        #cursor-badge {
+            position: absolute;
+            top: 48px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(6, 8, 13, 0.95);
+            border: 1px solid #00f0ff;
+            color: #00f0ff;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+            pointer-events: none;
+        }
+
+        /* Active hover states for cursor */
+        body.cursor-hover #cursor-ring {
+            width: 56px;
+            height: 56px;
+            border-color: #ffb703;
+        }
+        body.cursor-hover .cursor-bracket {
+            border-color: #ffb703;
+            width: 8px;
+            height: 8px;
+        }
+        body.cursor-hover #cursor-dot {
+            background-color: #ffb703;
+            width: 8px;
+            height: 8px;
+            box-shadow: 0 0 12px #ffb703;
+        }
+        body.cursor-hover #cursor-badge {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0px);
+        }
+
+        /* Disable custom cursor visual on mobile/touch devices */
+        @media (hover: none) or (pointer: coarse) {
+            #cursor-dot, #cursor-ring {
+                display: none !important;
+            }
         }
 
         ::selection {
-            background: rgba(0, 242, 254, 0.3);
-            color: #00f2fe;
+            background: rgba(0, 240, 255, 0.3);
+            color: #00f0ff;
         }
     </style>
 </head>
 <body class="cyber-grid relative min-h-screen text-slate-200 antialiased selection:bg-cyan-500/30 selection:text-cyan-300">
 
-    <div class="fixed inset-0 pointer-events-none z-0">
-        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[140px]"></div>
-        <div class="absolute bottom-1/3 right-10 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[140px]"></div>
+    <!-- UNIQUE CUSTOM MECHANICAL CURSOR SYSTEM -->
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring">
+        <div class="cursor-bracket cursor-tl"></div>
+        <div class="cursor-bracket cursor-tr"></div>
+        <div class="cursor-bracket cursor-bl"></div>
+        <div class="cursor-bracket cursor-br"></div>
+        <span id="cursor-badge">INSPECT</span>
     </div>
 
-    <header class="sticky top-0 z-50 w-full backdrop-blur-md bg-obsidian/80 border-b border-cyan-500/20 transition-all duration-300">
+    <!-- Ambient Gradient Backdrops -->
+    <div class="fixed inset-0 pointer-events-none z-0">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-cyan-500/10 rounded-full blur-[160px]"></div>
+        <div class="absolute bottom-1/3 right-10 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[150px]"></div>
+    </div>
+
+    <header class="sticky top-0 z-50 w-full backdrop-blur-md bg-obsidian/85 border-b border-cyan-500/20 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             
             <!-- Logo -->
-            <a href="#" class="flex items-center gap-3 group">
+            <a href="#" class="flex items-center gap-3 group" data-cursor="RAKESH LABS">
                 <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500 to-indigo-600 flex items-center justify-center font-mono font-bold text-obsidian text-xl shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform">
                     RP
                 </div>
                 <div>
-                    <span class="font-heading font-bold text-lg tracking-wider text-white group-hover:text-cyan-400 transition-colors">RAKESH PEDADA</span>
-                    <span class="block text-xs font-mono text-cyan-400/80">LABS // NIT NAGALAND</span>
+                    <span class="font-heading font-extrabold text-lg tracking-wider text-white group-hover:text-cyan-400 transition-colors">RAKESH PEDADA</span>
+                    <span class="block text-[10px] font-mono text-cyan-400/80 tracking-widest">[EEE // NIT NAGALAND]</span>
                 </div>
             </a>
 
-            <!-- Desktop Navigation Links -->
+            <!-- Navigation Links -->
             <nav class="hidden md:flex items-center gap-1 lg:gap-2 font-mono text-xs uppercase tracking-wider">
-                <a href="#overview" class="px-3 py-2 text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50 rounded-md transition-colors">Overview</a>
-                <a href="#powertwinai" class="px-3 py-2 text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50 rounded-md transition-colors flex items-center gap-1.5">
+                <a href="#overview" class="px-3 py-2 text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50 rounded-md transition-colors" data-cursor="GOTO OVERVIEW">Overview</a>
+                <a href="#powertwinai" class="px-3 py-2 text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50 rounded-md transition-colors flex items-center gap-1.5" data-cursor="3D DIGITAL TWIN">
                     <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
                     Powertwinai
                 </a>
-                <a href="#iot-unlock" class="px-3 py-2 text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50 rounded-md transition-colors">IoT Sound Door</a>
-                <a href="#skills" class="px-3 py-2 text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50 rounded-md transition-colors">Skills Matrix</a>
-                <a href="#leadership" class="px-3 py-2 text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50 rounded-md transition-colors">Leadership</a>
-                <a href="#contact" class="px-3 py-2 text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50 rounded-md transition-colors">Contact</a>
+                <a href="#iot-unlock" class="px-3 py-2 text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50 rounded-md transition-colors" data-cursor="IOT SIMULATOR">IoT Sound Door</a>
+                <a href="#skills" class="px-3 py-2 text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50 rounded-md transition-colors" data-cursor="SKILLS MATRIX">Skills</a>
+                <a href="#leadership" class="px-3 py-2 text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50 rounded-md transition-colors" data-cursor="LEADERSHIP">Leadership</a>
+                <a href="#contact" class="px-3 py-2 text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50 rounded-md transition-colors" data-cursor="TRANSMIT EMAIL">Contact</a>
             </nav>
 
             <!-- Status Indicator Badge -->
-            <div class="hidden lg:flex items-center gap-4">
-                <div class="flex items-center gap-2 px-3 py-1.5 rounded-full glass-panel text-xs font-mono border-emerald-500/30 text-emerald-300">
+            <div class="hidden lg:flex items-center gap-3">
+                <div class="flex items-center gap-2 px-3 py-1.5 rounded-full glass-panel text-xs font-mono border-emerald-500/30 text-emerald-300" data-cursor="STATUS: OPEN">
                     <span class="relative flex h-2 w-2">
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                     </span>
-                    <span>Open for Internships & Research</span>
+                    <span>Open for Research & Internships</span>
                 </div>
             </div>
 
@@ -182,77 +293,79 @@
             </button>
         </div>
 
+        <!-- Mobile Navigation Menu Dropdown -->
         <div id="mobile-menu" class="hidden md:hidden border-b border-cyan-500/20 bg-obsidian-card/95 backdrop-blur-xl px-4 py-6 space-y-4 font-mono text-sm">
             <a href="#overview" class="block py-2 text-slate-200 hover:text-cyan-400 border-b border-slate-800">01 // Overview</a>
             <a href="#powertwinai" class="block py-2 text-cyan-400 hover:text-cyan-300 border-b border-slate-800 font-bold">02 // Powertwinai (3D Twin)</a>
-            <a href="#iot-unlock" class="block py-2 text-slate-200 hover:text-cyan-400 border-b border-slate-800">03 // IoT Sound Unlock</a>
-            <a href="#skills" class="block py-2 text-slate-200 hover:text-cyan-400 border-b border-slate-800">04 // Skills Matrix</a>
+            <a href="#iot-unlock" class="block py-2 text-slate-200 hover:text-cyan-400 border-b border-slate-800">03 // IoT Sound Unlock Door</a>
+            <a href="#skills" class="block py-2 text-slate-200 hover:text-cyan-400 border-b border-slate-800">04 // Skills & Coursework</a>
             <a href="#leadership" class="block py-2 text-slate-200 hover:text-cyan-400 border-b border-slate-800">05 // Leadership & Mentorship</a>
-            <a href="#contact" class="block py-2 text-slate-200 hover:text-cyan-400">06 // Connect</a>
+            <a href="#contact" class="block py-2 text-slate-200 hover:text-cyan-400">06 // Connect Direct</a>
         </div>
     </header>
 
     <section id="overview" class="relative min-h-[calc(100vh-80px)] flex items-center justify-center pt-8 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden z-10">
         
-        <!-- Interactive Hero Three.js Canvas -->
+        <!-- Interactive Canvas Background for Floating Orbit Particles -->
         <div class="absolute inset-0 z-0 opacity-40 pointer-events-auto">
             <canvas id="hero-canvas"></canvas>
         </div>
 
         <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 pointer-events-none">
             
-            <!-- Left Hero Headline & Key Metrics -->
+            <!-- Left Hero Text & Key Stats HUD -->
             <div class="lg:col-span-7 space-y-6 pointer-events-auto">
                 
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-mono uppercase tracking-wider">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-mono uppercase tracking-wider" data-cursor="INSTITUTE">
                     <i class="fa-solid fa-microchip text-amber-400"></i>
                     <span>National Institute of Technology Nagaland</span>
                 </div>
 
                 <h1 class="text-4xl sm:text-6xl lg:text-7xl font-heading font-extrabold tracking-tight text-white leading-none">
-                    Bridging <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-indigo-400 text-glow-cyan">Electrical Gear</span> & Artificial Intelligence.
+                    Engineering <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-indigo-400 text-glow-cyan">Digital Twins</span> & AI Systems.
                 </h1>
 
                 <p class="text-lg sm:text-xl text-slate-300 max-w-2xl font-light leading-relaxed">
-                    I am <strong class="text-white font-semibold">Rakesh Pedada</strong>, an Electrical & Electronics Engineering undergraduate pioneering <span class="text-cyan-400 font-mono">Digital Twin 3D Reconstructions</span>, <span class="text-amber-400 font-mono">IoT Systems</span>, and AI-assisted power infrastructure health analysis.
+                    I am <strong class="text-white font-semibold">Rakesh Pedada</strong>, an Electrical & Electronics Engineering undergraduate pioneering 3D photogrammetry reconstruction, power equipment health diagnostics, embedded IoT architectures, and AI-assisted automation.
                 </p>
 
-                <!-- Key Metrics Grid -->
+                <!-- Key Metrics Grid HUD -->
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2">
-                    <div class="glass-panel p-4 rounded-xl border-l-2 border-l-cyan-400">
+                    <div class="glass-panel p-4 rounded-xl border-l-2 border-l-cyan-400" data-cursor="ACADEMIC CGPA">
                         <div class="text-2xl font-mono font-bold text-cyan-400">8.32</div>
                         <div class="text-xs font-mono text-slate-400 uppercase tracking-wider">CGPA (5th Sem)</div>
                     </div>
-                    <div class="glass-panel p-4 rounded-xl border-l-2 border-l-indigo-400">
+                    <div class="glass-panel p-4 rounded-xl border-l-2 border-l-indigo-400" data-cursor="NIT NAGALAND">
                         <div class="text-2xl font-mono font-bold text-indigo-400">B.Tech</div>
-                        <div class="text-xs font-mono text-slate-400 uppercase tracking-wider">EEE @ NIT Nagaland</div>
+                        <div class="text-xs font-mono text-slate-400 uppercase tracking-wider">EEE Department</div>
                     </div>
-                    <div class="glass-panel p-4 rounded-xl border-l-2 border-l-amber-400">
+                    <div class="glass-panel p-4 rounded-xl border-l-2 border-l-amber-400" data-cursor="IEEE MEMBER">
                         <div class="text-2xl font-mono font-bold text-amber-400">IEEE</div>
                         <div class="text-xs font-mono text-slate-400 uppercase tracking-wider">Student Member</div>
                     </div>
-                    <div class="glass-panel p-4 rounded-xl border-l-2 border-l-emerald-400">
+                    <div class="glass-panel p-4 rounded-xl border-l-2 border-l-emerald-400" data-cursor="PROJECT LEAD">
                         <div class="text-2xl font-mono font-bold text-emerald-400">Lead</div>
                         <div class="text-xs font-mono text-slate-400 uppercase tracking-wider">Powertwinai Owner</div>
                     </div>
                 </div>
 
-                <!-- Action CTAs -->
+                <!-- CTAs -->
                 <div class="flex flex-wrap gap-4 pt-4">
-                    <a href="#powertwinai" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-obsidian font-mono font-bold text-sm hover:brightness-110 shadow-lg shadow-cyan-500/25 transition-all flex items-center gap-2 group">
+                    <a href="#powertwinai" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-obsidian font-mono font-bold text-sm hover:brightness-110 shadow-lg shadow-cyan-500/25 transition-all flex items-center gap-2 group" data-cursor="INSPECT 3D MODEL">
                         <i class="fa-solid fa-cube group-hover:rotate-12 transition-transform"></i>
                         <span>Explore Powertwinai 3D</span>
                     </a>
-                    <a href="#iot-unlock" class="px-6 py-3.5 rounded-xl glass-panel text-cyan-300 font-mono font-semibold text-sm hover:bg-cyan-500/10 transition-all flex items-center gap-2">
+                    <a href="#iot-unlock" class="px-6 py-3.5 rounded-xl glass-panel text-cyan-300 font-mono font-semibold text-sm hover:bg-cyan-500/10 transition-all flex items-center gap-2" data-cursor="TEST SOUND UNLOCK">
                         <i class="fa-solid fa-wave-square text-amber-400"></i>
-                        <span>IoT Sound Unlock Simulator</span>
+                        <span>IoT Door Lock Simulator</span>
                     </a>
                 </div>
 
             </div>
 
+            <!-- Right Terminal HUD Interactive Widget -->
             <div class="lg:col-span-5 pointer-events-auto">
-                <div class="glass-panel rounded-2xl overflow-hidden border border-cyan-500/30 shadow-2xl shadow-cyan-950/50">
+                <div class="glass-panel rounded-2xl overflow-hidden border border-cyan-500/30 shadow-2xl shadow-cyan-950/50" data-cursor="INTERACTIVE HUD">
                     
                     <div class="bg-obsidian-card px-4 py-3 border-b border-slate-800 flex items-center justify-between">
                         <div class="flex items-center gap-2">
@@ -261,11 +374,11 @@
                             <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
                             <span class="ml-2 font-mono text-xs text-slate-400">rakesh@nit-nagaland:~$</span>
                         </div>
-                        <div class="text-xs font-mono text-cyan-400/70">HUD v3.5 // EEE</div>
+                        <div class="text-xs font-mono text-cyan-400/70">CLI HUD v4.0</div>
                     </div>
 
                     <div id="terminal-body" class="p-4 font-mono text-xs h-80 overflow-y-auto space-y-3 bg-obsidian/90 leading-relaxed text-slate-300">
-                        <p class="text-cyan-400"><i class="fa-solid fa-terminal mr-2"></i>Rakesh Pedada Interactive Lab System initialized.</p>
+                        <p class="text-cyan-400"><i class="fa-solid fa-terminal mr-2"></i>Rakesh Pedada Lab System Initialized.</p>
                         <p class="text-slate-400">Type <span class="text-amber-400 font-bold">'help'</span> for available commands or click quick chips below.</p>
                         
                         <div id="terminal-history"></div>
@@ -274,17 +387,17 @@
                     <form id="terminal-form" class="p-3 bg-obsidian-card border-t border-slate-800 flex items-center gap-2">
                         <span class="text-cyan-400 font-mono text-xs pl-2">&gt;</span>
                         <input type="text" id="terminal-input" placeholder="Type 'powertwin', 'skills', 'cgpa', 'contact'..." class="bg-transparent text-white font-mono text-xs w-full focus:outline-none placeholder-slate-600" autocomplete="off">
-                        <button type="submit" class="px-3 py-1 bg-cyan-500/20 hover:bg-cyan-500/40 text-cyan-300 font-mono text-xs rounded transition-colors">
+                        <button type="submit" class="px-3 py-1 bg-cyan-500/20 hover:bg-cyan-500/40 text-cyan-300 font-mono text-xs rounded transition-colors" data-cursor="EXECUTE">
                             RUN
                         </button>
                     </form>
 
                     <div class="p-2.5 bg-obsidian border-t border-slate-800/80 flex flex-wrap gap-2 text-[10px] font-mono">
                         <span class="text-slate-500 py-0.5">Quick exec:</span>
-                        <button onclick="executeTerminalCmd('powertwin')" class="px-2 py-0.5 rounded bg-cyan-950/80 text-cyan-300 hover:bg-cyan-900 border border-cyan-800">powertwin</button>
-                        <button onclick="executeTerminalCmd('skills')" class="px-2 py-0.5 rounded bg-purple-950/80 text-purple-300 hover:bg-purple-900 border border-purple-800">skills</button>
-                        <button onclick="executeTerminalCmd('cgpa')" class="px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 hover:bg-emerald-900 border border-emerald-800">cgpa</button>
-                        <button onclick="executeTerminalCmd('contact')" class="px-2 py-0.5 rounded bg-amber-950/80 text-amber-300 hover:bg-amber-900 border border-amber-800">contact</button>
+                        <button onclick="executeTerminalCmd('powertwin')" class="px-2 py-0.5 rounded bg-cyan-950/80 text-cyan-300 hover:bg-cyan-900 border border-cyan-800" data-cursor="EXEC POWERTWIN">powertwin</button>
+                        <button onclick="executeTerminalCmd('skills')" class="px-2 py-0.5 rounded bg-purple-950/80 text-purple-300 hover:bg-purple-900 border border-purple-800" data-cursor="EXEC SKILLS">skills</button>
+                        <button onclick="executeTerminalCmd('cgpa')" class="px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 hover:bg-emerald-900 border border-emerald-800" data-cursor="EXEC CGPA">cgpa</button>
+                        <button onclick="executeTerminalCmd('contact')" class="px-2 py-0.5 rounded bg-amber-950/80 text-amber-300 hover:bg-amber-900 border border-amber-800" data-cursor="EXEC CONTACT">contact</button>
                     </div>
 
                 </div>
@@ -296,11 +409,11 @@
     <section id="powertwinai" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
         
         <div class="space-y-4 mb-12">
-            <div class="flex items-center gap-3">
+            <div class="flex flex-wrap items-center gap-3">
                 <span class="px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-mono text-xs font-semibold">
-                    FLAGSHIP PROJECT // RESEARCH & DEVELOPMENT
+                    FLAGSHIP PROJECT // DIGITAL TWIN & AI
                 </span>
-                <span class="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono text-xs">
+                <span class="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono text-xs" data-cursor="PROJECT OWNER">
                     <i class="fa-solid fa-user-shield mr-1"></i> Owner & Primary Lead: Rakesh Pedada
                 </span>
             </div>
@@ -310,7 +423,7 @@
             </h2>
             
             <p class="text-slate-300 max-w-3xl text-base sm:text-lg leading-relaxed">
-                Powertwinai converts physical electrical and industrial power equipment into high-fidelity 3D digital twins and generates real-time AI-assisted health and structural audit reports using photogrammetry, point-cloud reconstruction, and Computer Vision algorithms.
+                Powertwinai converts physical electrical and industrial power equipment (transformers, high-voltage conductors, circuit switchgear) into high-fidelity 3D digital twins and generates real-time AI-assisted health and structural audit reports using photogrammetry, point-cloud reconstruction, and Computer Vision algorithms.
             </p>
         </div>
 
@@ -325,28 +438,28 @@
                         <h3 class="font-heading font-bold text-white text-lg flex items-center gap-2">
                             <i class="fa-solid fa-cube text-cyan-400"></i> Interactive 3D Equipment Twin Viewer
                         </h3>
-                        <p class="text-xs font-mono text-slate-400">3D Photogrammetry Model: High Voltage Industrial Substation Transformer</p>
+                        <p class="text-xs font-mono text-slate-400">Model: High Voltage Industrial Substation Transformer</p>
                     </div>
 
-                    <!-- Viewer Controls Bar -->
+                    <!-- Viewer Render Controls -->
                     <div class="flex items-center gap-2 flex-wrap text-xs font-mono">
-                        <button id="btn-wireframe" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-cyan-400 border border-slate-700 transition-colors flex items-center gap-1.5">
+                        <button id="btn-wireframe" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-cyan-400 border border-slate-700 transition-colors flex items-center gap-1.5" data-cursor="TOGGLE MESH">
                             <i class="fa-solid fa-vector-square"></i> Wireframe
                         </button>
-                        <button id="btn-heatmap" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-amber-400 border border-slate-700 transition-colors flex items-center gap-1.5">
+                        <button id="btn-heatmap" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-amber-400 border border-slate-700 transition-colors flex items-center gap-1.5" data-cursor="TOGGLE HEATMAP">
                             <i class="fa-solid fa-fire-flame-curved text-amber-400"></i> AI Heatmap
                         </button>
-                        <button id="btn-points" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-purple-400 border border-slate-700 transition-colors flex items-center gap-1.5">
-                            <i class="fa-solid fa-bullseye text-purple-400"></i> SIFT Features
+                        <button id="btn-points" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-purple-400 border border-slate-700 transition-colors flex items-center gap-1.5" data-cursor="TOGGLE SIFT">
+                            <i class="fa-solid fa-bullseye text-purple-400"></i> SIFT Nodes
                         </button>
-                        <button id="btn-rotate" class="px-3 py-1.5 rounded-lg bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 hover:bg-cyan-500/30 transition-colors flex items-center gap-1.5">
+                        <button id="btn-rotate" class="px-3 py-1.5 rounded-lg bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 hover:bg-cyan-500/30 transition-colors flex items-center gap-1.5" data-cursor="TOGGLE ORBIT">
                             <i class="fa-solid fa-rotate text-cyan-400"></i> Auto-Rotate
                         </button>
                     </div>
                 </div>
 
                 <!-- 3D Canvas Viewport -->
-                <div class="relative h-[420px] w-full rounded-xl bg-obsidian border border-slate-800/80 overflow-hidden cursor-grab active:cursor-grabbing">
+                <div class="relative h-[420px] w-full rounded-xl bg-obsidian border border-slate-800/80 overflow-hidden cursor-grab active:cursor-grabbing" data-cursor="ORBIT 3D VIEW">
                     <canvas id="twin-canvas"></canvas>
                     
                     <div class="absolute top-4 left-4 bg-obsidian-card/90 backdrop-blur-md px-3 py-2 rounded-lg border border-cyan-500/30 text-[11px] font-mono space-y-1">
@@ -361,15 +474,15 @@
                     <div class="absolute bottom-4 left-4 right-4 bg-obsidian-card/90 backdrop-blur-md p-3 rounded-lg border border-slate-800 flex items-center justify-between text-xs font-mono">
                         <div class="text-slate-300 flex items-center gap-2">
                             <i class="fa-solid fa-hand-pointer text-cyan-400"></i>
-                            <span>Drag mouse to orbit 3D model in space</span>
+                            <span>Click and drag to rotate 3D twin in orbit</span>
                         </div>
-                        <button id="btn-run-audit" class="px-3 py-1.5 rounded bg-gradient-to-r from-amber-500 to-orange-600 text-obsidian font-bold text-xs hover:brightness-110 transition-all flex items-center gap-1.5 shadow-md">
-                            <i class="fa-solid fa-microchip"></i> Run AI Diagnostics Simulation
+                        <button id="btn-run-audit" class="px-3 py-1.5 rounded bg-gradient-to-r from-amber-500 to-orange-600 text-obsidian font-bold text-xs hover:brightness-110 transition-all flex items-center gap-1.5 shadow-md" data-cursor="RUN AI AUDIT">
+                            <i class="fa-solid fa-microchip"></i> Run AI Health Audit
                         </button>
                     </div>
                 </div>
 
-                <!-- Simulated Audit Report -->
+                <!-- Simulated AI Health Audit Output Box -->
                 <div id="ai-audit-result" class="hidden mt-4 p-4 rounded-xl bg-slate-900/90 border border-emerald-500/40 font-mono text-xs space-y-2">
                     <div class="flex items-center justify-between">
                         <span class="text-emerald-400 font-bold text-sm flex items-center gap-2">
@@ -379,7 +492,7 @@
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-slate-300">
                         <div class="p-2 rounded bg-obsidian border border-slate-800">
-                            <div class="text-slate-500 text-[10px]">HEALTH SCORE</div>
+                            <div class="text-slate-500 text-[10px]">EQUIPMENT HEALTH</div>
                             <div class="text-lg font-bold text-emerald-400">94.2 / 100</div>
                         </div>
                         <div class="p-2 rounded bg-obsidian border border-slate-800">
@@ -387,7 +500,7 @@
                             <div class="text-lg font-bold text-amber-400">42.8°C (Normal)</div>
                         </div>
                         <div class="p-2 rounded bg-obsidian border border-slate-800">
-                            <div class="text-slate-500 text-[10px]">RECOMMENDATION</div>
+                            <div class="text-slate-500 text-[10px]">AI RECOMMENDATION</div>
                             <div class="text-xs text-cyan-300 font-semibold">Routine Check in 90 Days</div>
                         </div>
                     </div>
@@ -395,33 +508,34 @@
 
             </div>
 
+            <!-- Photogrammetry Pipeline Walkthrough -->
             <div class="lg:col-span-4 space-y-4">
                 <div class="glass-panel p-6 rounded-2xl space-y-4">
                     <h3 class="font-heading font-bold text-white text-lg flex items-center gap-2">
                         <i class="fa-solid fa-sitemap text-amber-400"></i> Photogrammetry Pipeline
                     </h3>
                     <p class="text-xs text-slate-400 leading-relaxed">
-                        End-to-end multi-stage pipeline designed & engineered by Rakesh Pedada for transforming physical assets into digital twins.
+                        End-to-end multi-stage computer vision pipeline engineered by Rakesh Pedada for transforming multi-angle photographs into 3D meshes.
                     </p>
 
                     <div class="space-y-2.5 font-mono text-xs">
-                        <div class="p-3 rounded-xl bg-obsidian-card border border-cyan-500/30 hover:border-cyan-400 transition-colors cursor-pointer group" onclick="showPipelineModal(1)">
+                        <div class="p-3 rounded-xl bg-obsidian-card border border-cyan-500/30 hover:border-cyan-400 transition-colors cursor-pointer group" onclick="showPipelineModal(1)" data-cursor="STEP 1 INFO">
                             <div class="flex items-center justify-between">
                                 <span class="text-cyan-400 font-bold">01. Multi-View Image Acquisition</span>
                                 <i class="fa-solid fa-chevron-right text-slate-600 group-hover:text-cyan-400 transition-colors"></i>
                             </div>
-                            <p class="text-slate-400 text-[11px] mt-1">High-resolution spatial overlaps</p>
+                            <p class="text-slate-400 text-[11px] mt-1">High-resolution spatial photo overlaps</p>
                         </div>
 
-                        <div class="p-3 rounded-xl bg-obsidian-card border border-indigo-500/30 hover:border-indigo-400 transition-colors cursor-pointer group" onclick="showPipelineModal(2)">
+                        <div class="p-3 rounded-xl bg-obsidian-card border border-indigo-500/30 hover:border-indigo-400 transition-colors cursor-pointer group" onclick="showPipelineModal(2)" data-cursor="STEP 2 INFO">
                             <div class="flex items-center justify-between">
                                 <span class="text-indigo-400 font-bold">02. Preprocessing & SIFT Feature Extract</span>
                                 <i class="fa-solid fa-chevron-right text-slate-600 group-hover:text-indigo-400 transition-colors"></i>
                             </div>
-                            <p class="text-slate-400 text-[11px] mt-1">Keypoint detection and feature matching</p>
+                            <p class="text-slate-400 text-[11px] mt-1">OpenCV Keypoint detection & SIFT match</p>
                         </div>
 
-                        <div class="p-3 rounded-xl bg-obsidian-card border border-purple-500/30 hover:border-purple-400 transition-colors cursor-pointer group" onclick="showPipelineModal(3)">
+                        <div class="p-3 rounded-xl bg-obsidian-card border border-purple-500/30 hover:border-purple-400 transition-colors cursor-pointer group" onclick="showPipelineModal(3)" data-cursor="STEP 3 INFO">
                             <div class="flex items-center justify-between">
                                 <span class="text-purple-400 font-bold">03. COLMAP Photogrammetry</span>
                                 <i class="fa-solid fa-chevron-right text-slate-600 group-hover:text-purple-400 transition-colors"></i>
@@ -429,12 +543,12 @@
                             <p class="text-slate-400 text-[11px] mt-1">Structure-from-Motion triangulation</p>
                         </div>
 
-                        <div class="p-3 rounded-xl bg-obsidian-card border border-amber-500/30 hover:border-amber-400 transition-colors cursor-pointer group" onclick="showPipelineModal(4)">
+                        <div class="p-3 rounded-xl bg-obsidian-card border border-amber-500/30 hover:border-amber-400 transition-colors cursor-pointer group" onclick="showPipelineModal(4)" data-cursor="STEP 4 INFO">
                             <div class="flex items-center justify-between">
                                 <span class="text-amber-400 font-bold">04. Open3D Mesh & AI Diagnostics</span>
                                 <i class="fa-solid fa-chevron-right text-slate-600 group-hover:text-amber-400 transition-colors"></i>
                             </div>
-                            <p class="text-slate-400 text-[11px] mt-1">Point cloud mesh & structural health assessment</p>
+                            <p class="text-slate-400 text-[11px] mt-1">Point-cloud meshing & health report generation</p>
                         </div>
                     </div>
                 </div>
@@ -448,52 +562,54 @@
         
         <div class="space-y-3 mb-12">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono text-xs font-semibold">
-                <i class="fa-solid fa-microchip"></i> EMBEDDED IOT PROJECT
+                <i class="fa-solid fa-microchip"></i> EMBEDDED IOT HARDWARE PROJECT
             </div>
             <h2 class="text-3xl sm:text-5xl font-heading font-extrabold text-white tracking-tight">
-                IoT Secret Sound Unlock Door System
+                IoT Secret Sound Unlock Door
             </h2>
             <p class="text-slate-300 max-w-2xl text-base sm:text-lg">
-                ESP32 micro-controller based security system that detects predefined sound rhythm sequences using sound sensors to actuate door servo unlocking mechanisms.
+                ESP32 micro-controller security system that detects predefined sound rhythm sequences using acoustic sensors to actuate door servo unlocking mechanisms.
             </p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
+            <!-- Left Info Stack -->
             <div class="lg:col-span-5 space-y-6">
                 <div class="glass-panel p-6 rounded-2xl space-y-4">
                     <h3 class="text-xl font-heading font-bold text-white flex items-center gap-2">
-                        <i class="fa-solid fa-layer-group text-amber-400"></i> Hardware & Software Stack
+                        <i class="fa-solid fa-layer-group text-amber-400"></i> Technology Stack
                     </h3>
                     
                     <div class="grid grid-cols-2 gap-3 text-xs font-mono">
-                        <div class="p-3 rounded-xl bg-obsidian-card border border-slate-800 space-y-1">
+                        <div class="p-3 rounded-xl bg-obsidian-card border border-slate-800 space-y-1" data-cursor="SOC BOARD">
                             <span class="text-slate-400 block text-[10px]">MICROCONTROLLER</span>
-                            <span class="text-amber-400 font-bold text-sm">ESP32 SoC</span>
+                            <span class="text-amber-400 font-bold text-sm">ESP32 Board</span>
                         </div>
-                        <div class="p-3 rounded-xl bg-obsidian-card border border-slate-800 space-y-1">
+                        <div class="p-3 rounded-xl bg-obsidian-card border border-slate-800 space-y-1" data-cursor="SERVO MOTOR">
                             <span class="text-slate-400 block text-[10px]">ACTUATOR</span>
-                            <span class="text-cyan-400 font-bold text-sm">Servo Motor</span>
+                            <span class="text-cyan-400 font-bold text-sm">Servo Mechanism</span>
                         </div>
-                        <div class="p-3 rounded-xl bg-obsidian-card border border-slate-800 space-y-1">
-                            <span class="text-slate-400 block text-[10px]">SENSOR</span>
-                            <span class="text-indigo-400 font-bold text-sm">Sound Sensor Module</span>
+                        <div class="p-3 rounded-xl bg-obsidian-card border border-slate-800 space-y-1" data-cursor="MIC SENSOR">
+                            <span class="text-slate-400 block text-[10px]">ACOUSTIC SENSOR</span>
+                            <span class="text-indigo-400 font-bold text-sm">Sound Sensor</span>
                         </div>
-                        <div class="p-3 rounded-xl bg-obsidian-card border border-slate-800 space-y-1">
-                            <span class="text-slate-400 block text-[10px]">LOGIC</span>
-                            <span class="text-emerald-400 font-bold text-sm">Python & C++</span>
+                        <div class="p-3 rounded-xl bg-obsidian-card border border-slate-800 space-y-1" data-cursor="PYTHON LOGIC">
+                            <span class="text-slate-400 block text-[10px]">CONTROL LOGIC</span>
+                            <span class="text-emerald-400 font-bold text-sm">Python / C++</span>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Right Live Simulator Widget -->
             <div class="lg:col-span-7">
                 <div class="glass-panel-amber p-6 rounded-2xl space-y-6 relative overflow-hidden">
                     
                     <div class="flex items-center justify-between border-b border-slate-800 pb-4">
                         <div>
                             <h3 class="font-heading font-bold text-white text-lg flex items-center gap-2">
-                                <i class="fa-solid fa-wave-square text-amber-400"></i> Secret Sound Rhythm Simulator
+                                <i class="fa-solid fa-wave-square text-amber-400"></i> Rhythm Sound Pattern Simulator
                             </h3>
                             <p class="text-xs font-mono text-slate-400">Tap knock pad or trigger presets to test ESP32 rhythm unlock</p>
                         </div>
@@ -506,27 +622,27 @@
                     <div class="h-28 w-full bg-obsidian rounded-xl border border-slate-800 relative overflow-hidden flex items-center justify-center p-2">
                         <canvas id="audio-wave-canvas" class="w-full h-full"></canvas>
                         <div id="wave-placeholder" class="absolute text-xs font-mono text-slate-500 pointer-events-none">
-                            [ Sound Sensor Waiting for Knock Input... ]
+                            [ Acoustic Sensor Listening for Knock Sequence... ]
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <button id="tap-sound-btn" class="h-24 rounded-xl bg-gradient-to-br from-amber-500/20 to-orange-600/20 hover:from-amber-500/30 hover:to-orange-600/30 border-2 border-dashed border-amber-400/60 flex flex-col items-center justify-center gap-1 text-amber-300 active:scale-95 transition-all group">
+                        <button id="tap-sound-btn" class="h-24 rounded-xl bg-gradient-to-br from-amber-500/20 to-orange-600/20 hover:from-amber-500/30 hover:to-orange-600/30 border-2 border-dashed border-amber-400/60 flex flex-col items-center justify-center gap-1 text-amber-300 active:scale-95 transition-all group" data-cursor="TAP KNOCK RHYTHM">
                             <i class="fa-solid fa-hand-pointer text-2xl group-hover:scale-110 transition-transform"></i>
                             <span class="font-mono font-bold text-sm">TAP RHYTHM KNOCK</span>
-                            <span class="text-[10px] text-amber-400/70 font-mono">Click multiple times with rhythm</span>
+                            <span class="text-[10px] text-amber-400/70 font-mono">Click repeatedly with secret rhythm</span>
                         </button>
 
                         <div class="space-y-2 flex flex-col justify-between">
-                            <button onclick="simulateSecretKnock('correct')" class="w-full py-2 px-3 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 font-mono text-xs flex items-center justify-between transition-colors">
+                            <button onclick="simulateSecretKnock('correct')" class="w-full py-2 px-3 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 font-mono text-xs flex items-center justify-between transition-colors" data-cursor="TEST CORRECT KNOCK">
                                 <span><i class="fa-solid fa-key text-emerald-400 mr-2"></i>Preset: Secret Knock</span>
                                 <span class="text-[10px] bg-emerald-950 px-1.5 py-0.5 rounded">MATCH</span>
                             </button>
-                            <button onclick="simulateSecretKnock('incorrect')" class="w-full py-2 px-3 rounded-lg bg-red-500/20 hover:bg-red-500/30 text-red-300 border border-red-500/40 font-mono text-xs flex items-center justify-between transition-colors">
+                            <button onclick="simulateSecretKnock('incorrect')" class="w-full py-2 px-3 rounded-lg bg-red-500/20 hover:bg-red-500/30 text-red-300 border border-red-500/40 font-mono text-xs flex items-center justify-between transition-colors" data-cursor="TEST RANDOM NOISE">
                                 <span><i class="fa-solid fa-xmark text-red-400 mr-2"></i>Preset: Random Noise</span>
                                 <span class="text-[10px] bg-red-950 px-1.5 py-0.5 rounded">DENIED</span>
                             </button>
-                            <button onclick="resetDoorLock()" class="w-full py-1.5 px-3 rounded-lg bg-slate-800 text-slate-400 hover:text-white font-mono text-[11px] transition-colors">
+                            <button onclick="resetDoorLock()" class="w-full py-1.5 px-3 rounded-lg bg-slate-800 text-slate-400 hover:text-white font-mono text-[11px] transition-colors" data-cursor="RESET LOCK">
                                 Reset Lock Mechanism
                             </button>
                         </div>
@@ -564,27 +680,27 @@
 
             <!-- Category Filter Buttons -->
             <div id="skill-filter-container" class="flex flex-wrap gap-2 font-mono text-xs">
-                <button onclick="filterSkills('all')" class="skill-filter-btn px-3 py-2 rounded-lg bg-cyan-500 text-obsidian font-bold transition-all" data-cat="all">All</button>
-                <button onclick="filterSkills('programming')" class="skill-filter-btn px-3 py-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white transition-all" data-cat="programming">Programming</button>
-                <button onclick="filterSkills('hardware')" class="skill-filter-btn px-3 py-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white transition-all" data-cat="hardware">Hardware / IoT</button>
-                <button onclick="filterSkills('vision')" class="skill-filter-btn px-3 py-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white transition-all" data-cat="vision">Vision & 3D Twin</button>
+                <button onclick="filterSkills('all')" class="skill-filter-btn px-3 py-2 rounded-lg bg-cyan-500 text-obsidian font-bold transition-all" data-cat="all" data-cursor="SHOW ALL SKILLS">All</button>
+                <button onclick="filterSkills('programming')" class="skill-filter-btn px-3 py-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white transition-all" data-cat="programming" data-cursor="FILTER PROGRAMMING">Programming</button>
+                <button onclick="filterSkills('hardware')" class="skill-filter-btn px-3 py-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white transition-all" data-cat="hardware" data-cursor="FILTER HARDWARE">Hardware / IoT</button>
+                <button onclick="filterSkills('vision')" class="skill-filter-btn px-3 py-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white transition-all" data-cat="vision" data-cursor="FILTER VISION & 3D">Vision & 3D Twin</button>
             </div>
         </div>
 
         <div id="skills-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
             
-            <div class="skill-card glass-panel p-6 rounded-2xl space-y-3" data-cat="programming">
+            <div class="skill-card glass-panel p-6 rounded-2xl space-y-3" data-cat="programming" data-cursor="C / PYTHON">
                 <div class="flex items-center justify-between">
                     <span class="text-cyan-400 font-mono text-xs font-bold">LANGUAGES</span>
                     <i class="fa-solid fa-code text-cyan-400"></i>
                 </div>
                 <h3 class="font-heading font-bold text-xl text-white">C & Python</h3>
                 <p class="text-xs text-slate-400 leading-relaxed">
-                    Core programming languages for microcontrollers, system automation, and computer vision pipelines.
+                    Core programming languages for microcontrollers, system automation, data handling, and computer vision pipelines.
                 </p>
             </div>
 
-            <div class="skill-card glass-panel p-6 rounded-2xl space-y-3" data-cat="hardware">
+            <div class="skill-card glass-panel p-6 rounded-2xl space-y-3" data-cat="hardware" data-cursor="MATLAB / SIMULINK">
                 <div class="flex items-center justify-between">
                     <span class="text-amber-400 font-mono text-xs font-bold">ENGINEERING MATH</span>
                     <i class="fa-solid fa-chart-line text-amber-400"></i>
@@ -595,47 +711,47 @@
                 </p>
             </div>
 
-            <div class="skill-card glass-panel p-6 rounded-2xl space-y-3" data-cat="hardware">
+            <div class="skill-card glass-panel p-6 rounded-2xl space-y-3" data-cat="hardware" data-cursor="ESP32 / ARDUINO">
                 <div class="flex items-center justify-between">
                     <span class="text-emerald-400 font-mono text-xs font-bold">EMBEDDED HARDWARE</span>
                     <i class="fa-solid fa-microchip text-emerald-400"></i>
                 </div>
                 <h3 class="font-heading font-bold text-xl text-white">ESP32 & Arduino</h3>
                 <p class="text-xs text-slate-400 leading-relaxed">
-                    Prototyping IoT nodes, sensor integration, sound & thermal actuation, and wireless telemetry.
+                    Prototyping IoT nodes, sensor integration, acoustic rhythm & thermal actuation, and wireless telemetry.
                 </p>
             </div>
 
-            <div class="skill-card glass-panel p-6 rounded-2xl space-y-3" data-cat="vision">
+            <div class="skill-card glass-panel p-6 rounded-2xl space-y-3" data-cat="vision" data-cursor="3D RECONSTRUCTION">
                 <div class="flex items-center justify-between">
                     <span class="text-purple-400 font-mono text-xs font-bold">3D RECONSTRUCTION</span>
                     <i class="fa-solid fa-eye text-purple-400"></i>
                 </div>
                 <h3 class="font-heading font-bold text-xl text-white">OpenCV, COLMAP & Open3D</h3>
                 <p class="text-xs text-slate-400 leading-relaxed">
-                    SIFT keypoint extraction, Structure-from-Motion photogrammetry, point cloud meshing, and spatial registration.
+                    SIFT keypoint feature extraction, Structure-from-Motion photogrammetry, point cloud meshing, and spatial registration.
                 </p>
             </div>
 
-            <div class="skill-card glass-panel p-6 rounded-2xl space-y-3" data-cat="programming">
+            <div class="skill-card glass-panel p-6 rounded-2xl space-y-3" data-cat="programming" data-cursor="STREAMLIT">
                 <div class="flex items-center justify-between">
                     <span class="text-indigo-400 font-mono text-xs font-bold">APP INTERFACES</span>
                     <i class="fa-solid fa-window-maximize text-indigo-400"></i>
                 </div>
                 <h3 class="font-heading font-bold text-xl text-white">Streamlit</h3>
                 <p class="text-xs text-slate-400 leading-relaxed">
-                    Building analytical web interfaces and interactive diagnostic inspection dashboards.
+                    Building analytical web interfaces and interactive diagnostic inspection dashboards for engineering datasets.
                 </p>
             </div>
 
-            <div class="skill-card glass-panel p-6 rounded-2xl space-y-3" data-cat="hardware">
+            <div class="skill-card glass-panel p-6 rounded-2xl space-y-3" data-cat="hardware" data-cursor="POWER SYSTEMS">
                 <div class="flex items-center justify-between">
                     <span class="text-amber-400 font-mono text-xs font-bold">ELECTRICAL DOMAINS</span>
                     <i class="fa-solid fa-bolt text-amber-400"></i>
                 </div>
                 <h3 class="font-heading font-bold text-xl text-white">Power Systems & Electronics</h3>
                 <p class="text-xs text-slate-400 leading-relaxed">
-                    Digital logic design, electromagnetic field theory, electrical circuit dynamics, and power machines.
+                    Digital logic design, electromagnetic field theory, electrical circuit dynamics, and power electrical machines.
                 </p>
             </div>
 
@@ -650,26 +766,26 @@
             <div class="lg:col-span-7 space-y-6">
                 <div class="space-y-3">
                     <span class="px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 font-mono text-xs font-semibold">
-                        RESPONSIBILITY
+                        RESPONSIBILITY & MENTORSHIP
                     </span>
                     <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-white tracking-tight">
-                        Leadership & Mentorship
+                        Leadership & Direction
                     </h2>
                 </div>
 
                 <div class="space-y-4">
-                    <div class="glass-panel p-6 rounded-2xl space-y-3 border-l-2 border-l-indigo-400">
+                    <div class="glass-panel p-6 rounded-2xl space-y-3 border-l-2 border-l-indigo-400" data-cursor="PUBLICITY SECRETARY">
                         <div class="flex items-center justify-between">
                             <h3 class="font-heading font-bold text-lg text-white">Publicity Secretary</h3>
                             <span class="text-xs font-mono text-indigo-300 bg-indigo-950 px-2.5 py-1 rounded border border-indigo-800">NIT Nagaland</span>
                         </div>
                         <ul class="text-xs text-slate-300 space-y-2 list-disc list-inside leading-relaxed">
                             <li>Scripted, directed, and produced official promotional reels and media campaigns.</li>
-                            <li>Traveled to neighboring colleges to invite participants, driving event outreach engagement.</li>
+                            <li>Traveled to neighboring colleges to invite participants, driving event outreach engagement across institutions.</li>
                         </ul>
                     </div>
 
-                    <div class="glass-panel p-6 rounded-2xl space-y-3 border-l-2 border-l-cyan-400">
+                    <div class="glass-panel p-6 rounded-2xl space-y-3 border-l-2 border-l-cyan-400" data-cursor="MENTORSHIP LEAD">
                         <div class="flex items-center justify-between">
                             <h3 class="font-heading font-bold text-lg text-white">Technical Project Mentorship</h3>
                             <span class="text-xs font-mono text-cyan-300 bg-cyan-950 px-2.5 py-1 rounded border border-cyan-800">Academic Mentorship</span>
@@ -684,7 +800,7 @@
             <div class="lg:col-span-5 space-y-6">
                 <div class="space-y-3">
                     <span class="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono text-xs font-semibold">
-                        RECOGNITION
+                        HONORS & AFFILIATIONS
                     </span>
                     <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-white tracking-tight">
                         Achievements
@@ -692,7 +808,7 @@
                 </div>
 
                 <div class="space-y-4">
-                    <div class="glass-panel-amber p-6 rounded-2xl flex items-start gap-4">
+                    <div class="glass-panel-amber p-6 rounded-2xl flex items-start gap-4" data-cursor="3RD PLACE IoT">
                         <div class="w-12 h-12 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 text-2xl shrink-0">
                             🥉
                         </div>
@@ -704,7 +820,7 @@
                         </div>
                     </div>
 
-                    <div class="glass-panel p-6 rounded-2xl flex items-start gap-4 border-cyan-500/30">
+                    <div class="glass-panel p-6 rounded-2xl flex items-start gap-4 border-cyan-500/30" data-cursor="IEEE MEMBER">
                         <div class="w-12 h-12 rounded-xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-400 text-xl shrink-0">
                             <i class="fa-solid fa-certificate"></i>
                         </div>
@@ -729,10 +845,10 @@
             <div class="lg:col-span-6 space-y-6">
                 <div class="space-y-3">
                     <span class="px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-mono text-xs font-semibold">
-                        GET IN TOUCH
+                        DIRECT TRANSMISSION
                     </span>
                     <h2 class="text-3xl sm:text-5xl font-heading font-extrabold text-white tracking-tight">
-                        Let's Connect & Collaborate
+                        Connect & Collaborate
                     </h2>
                 </div>
 
@@ -743,17 +859,17 @@
                                 <i class="fa-solid fa-envelope"></i>
                             </div>
                             <div>
-                                <span class="text-slate-400 block text-[10px]">DIRECT EMAIL</span>
+                                <span class="text-slate-400 block text-[10px]">EMAIL ADDRESS</span>
                                 <span class="text-white font-semibold text-sm">dileshwarao02@gmail.com</span>
                             </div>
                         </div>
-                        <button onclick="copyToClipboard('dileshwarao02@gmail.com')" class="px-3 py-1.5 rounded-lg bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 transition-colors flex items-center gap-1">
+                        <button onclick="copyToClipboard('dileshwarao02@gmail.com')" class="px-3 py-1.5 rounded-lg bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 transition-colors flex items-center gap-1" data-cursor="COPY EMAIL">
                             <i class="fa-solid fa-copy"></i> Copy
                         </button>
                     </div>
 
                     <div class="grid grid-cols-2 gap-3">
-                        <a href="https://linkedin.com/in/pedada-rakesh" target="_blank" rel="noopener noreferrer" class="glass-panel p-4 rounded-xl flex items-center gap-3 hover:border-cyan-400 transition-colors group">
+                        <a href="https://linkedin.com/in/pedada-rakesh" target="_blank" rel="noopener noreferrer" class="glass-panel p-4 rounded-xl flex items-center gap-3 hover:border-cyan-400 transition-colors group" data-cursor="OPEN LINKEDIN">
                             <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 text-base group-hover:scale-110 transition-transform">
                                 <i class="fa-brands fa-linkedin-in"></i>
                             </div>
@@ -763,7 +879,7 @@
                             </div>
                         </a>
 
-                        <a href="https://github.com/RakeshPedada" target="_blank" rel="noopener noreferrer" class="glass-panel p-4 rounded-xl flex items-center gap-3 hover:border-cyan-400 transition-colors group">
+                        <a href="https://github.com/RakeshPedada" target="_blank" rel="noopener noreferrer" class="glass-panel p-4 rounded-xl flex items-center gap-3 hover:border-cyan-400 transition-colors group" data-cursor="OPEN GITHUB">
                             <div class="w-10 h-10 rounded-lg bg-slate-700/30 flex items-center justify-center text-slate-200 text-base group-hover:scale-110 transition-transform">
                                 <i class="fa-brands fa-github"></i>
                             </div>
@@ -779,26 +895,26 @@
             <div class="lg:col-span-6">
                 <div class="glass-panel p-8 rounded-2xl space-y-6 relative border-cyan-500/30">
                     <h3 class="font-heading font-bold text-white text-xl flex items-center gap-2">
-                        <i class="fa-solid fa-paper-plane text-cyan-400"></i> Send a Direct Message
+                        <i class="fa-solid fa-paper-plane text-cyan-400"></i> Transmit Message Direct
                     </h3>
 
                     <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-4 font-mono text-xs">
                         <div>
-                            <label class="block text-slate-300 mb-1.5">YOUR NAME</label>
-                            <input type="text" required placeholder="e.g. Dr. Sarah Jenkins" class="w-full bg-obsidian border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 transition-colors placeholder-slate-600">
+                            <label class="block text-slate-300 mb-1.5">SENDER NAME</label>
+                            <input type="text" required placeholder="e.g. Dr. Sarah Jenkins" class="w-full bg-obsidian border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 transition-colors placeholder-slate-600" data-cursor="TYPE NAME">
                         </div>
 
                         <div>
-                            <label class="block text-slate-300 mb-1.5">YOUR EMAIL ADDRESS</label>
-                            <input type="email" required placeholder="e.g. sarah@lab-research.org" class="w-full bg-obsidian border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 transition-colors placeholder-slate-600">
+                            <label class="block text-slate-300 mb-1.5">SENDER EMAIL</label>
+                            <input type="email" required placeholder="e.g. sarah@lab-research.org" class="w-full bg-obsidian border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 transition-colors placeholder-slate-600" data-cursor="TYPE EMAIL">
                         </div>
 
                         <div>
-                            <label class="block text-slate-300 mb-1.5">MESSAGE</label>
-                            <textarea rows="4" required placeholder="Describe research topic or project collaboration details..." class="w-full bg-obsidian border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 transition-colors placeholder-slate-600 resize-none"></textarea>
+                            <label class="block text-slate-300 mb-1.5">MESSAGE CONTENT</label>
+                            <textarea rows="4" required placeholder="Inquire about research positions or project collaborations..." class="w-full bg-obsidian border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 transition-colors placeholder-slate-600 resize-none" data-cursor="TYPE MESSAGE"></textarea>
                         </div>
 
-                        <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 text-obsidian font-bold text-sm hover:brightness-110 shadow-lg shadow-cyan-500/20 transition-all flex items-center justify-center gap-2">
+                        <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 text-obsidian font-bold text-sm hover:brightness-110 shadow-lg shadow-cyan-500/20 transition-all flex items-center justify-center gap-2" data-cursor="SEND MESSAGE">
                             <i class="fa-solid fa-paper-plane"></i>
                             <span>Transmit Message</span>
                         </button>
@@ -814,30 +930,80 @@
 
     </section>
 
-    <!-- Modal Box -->
+    <!-- Pipeline Step Modal -->
     <div id="pipeline-modal" class="fixed inset-0 z-50 hidden bg-obsidian/80 backdrop-blur-md flex items-center justify-center p-4">
         <div class="glass-panel p-6 sm:p-8 rounded-2xl max-w-xl w-full space-y-4 border-cyan-500/50 relative">
-            <button onclick="hidePipelineModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2 text-xl">
+            <button onclick="hidePipelineModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2 text-xl" data-cursor="CLOSE">
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <div id="pipeline-modal-content" class="space-y-3 font-mono"></div>
         </div>
     </div>
 
-    <!-- Toast Notification Banner -->
+    <!-- Notification Toast -->
     <div id="toast-notification" class="fixed bottom-6 right-6 z-50 hidden glass-panel px-4 py-3 rounded-xl border-cyan-400 text-cyan-300 font-mono text-xs shadow-2xl flex items-center gap-3">
         <i class="fa-solid fa-circle-info text-cyan-400"></i>
         <span id="toast-message">Notification message</span>
     </div>
 
     <script>
+        const dot = document.getElementById('cursor-dot');
+        const ring = document.getElementById('cursor-ring');
+        const badge = document.getElementById('cursor-badge');
+
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let ringX = mouseX;
+        let ringY = mouseY;
+
+        // Track exact mouse position
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+
+            // Direct update for center precision dot
+            dot.style.left = `${mouseX}px`;
+            dot.style.top = `${mouseY}px`;
+        });
+
+        // Smooth physics loop for outer mechanical bracket ring
+        function animateCursor() {
+            // Lerp interpolation (0.18 factor)
+            ringX += (mouseX - ringX) * 0.18;
+            ringY += (mouseY - ringY) * 0.18;
+
+            ring.style.left = `${ringX}px`;
+            ring.style.top = `${ringY}px`;
+
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Handle interactive hover state triggers across elements
+        document.addEventListener('mouseover', (e) => {
+            const target = e.target.closest('[data-cursor], a, button, input, textarea, select');
+            if (target) {
+                document.body.classList.add('cursor-hover');
+                const cursorText = target.getAttribute('data-cursor') || 'INTERACT';
+                badge.innerText = cursorText;
+            }
+        });
+
+        document.addEventListener('mouseout', (e) => {
+            const target = e.target.closest('[data-cursor], a, button, input, textarea, select');
+            if (target) {
+                document.body.classList.remove('cursor-hover');
+            }
+        });
+
+        // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
 
+        // Utility: Copy to Clipboard & Toast
         function showToast(msg) {
             const toast = document.getElementById('toast-notification');
             const toastMsg = document.getElementById('toast-message');
@@ -851,6 +1017,301 @@
         function copyToClipboard(text) {
             document.execCommand('copy');
             showToast(`Copied email to clipboard: ${text}`);
+        }
+
+        function initHeroCanvas() {
+            const canvas = document.getElementById('hero-canvas');
+            if (!canvas) return;
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 30;
+
+            const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+            renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+            const particlesGeometry = new THREE.BufferGeometry();
+            const particleCount = 220;
+            const posArray = new Float32Array(particleCount * 3);
+
+            for (let i = 0; i < particleCount * 3; i++) {
+                posArray[i] = (Math.random() - 0.5) * 80;
+            }
+
+            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            const particlesMaterial = new THREE.PointsMaterial({
+                size: 0.35,
+                color: 0x00f0ff,
+                transparent: true,
+                opacity: 0.5
+            });
+
+            const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+            scene.add(particlesMesh);
+
+            function animate() {
+                requestAnimationFrame(animate);
+                particlesMesh.rotation.y += 0.0007;
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            window.addEventListener('resize', () => {
+                camera.aspect = canvas.clientWidth / canvas.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+            });
+        }
+
+        let twinScene, twinCamera, twinRenderer, transformerGroup, pointCloudMesh, heatmapMesh, siftPointsGroup;
+        let isAutoRotating = true;
+        let isWireframe = false;
+        let isHeatmapActive = false;
+        let isPointsActive = false;
+
+        function initDigitalTwinViewer() {
+            const canvas = document.getElementById('twin-canvas');
+            if (!canvas) return;
+
+            twinScene = new THREE.Scene();
+            twinCamera = new THREE.PerspectiveCamera(50, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
+            twinCamera.position.set(18, 14, 22);
+            twinCamera.lookAt(0, 0, 0);
+
+            twinRenderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+            twinRenderer.setSize(canvas.clientWidth, canvas.clientHeight);
+            twinRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+            twinScene.add(ambientLight);
+
+            const dirLight1 = new THREE.DirectionalLight(0x00f0ff, 1.3);
+            dirLight1.position.set(20, 30, 20);
+            twinScene.add(dirLight1);
+
+            transformerGroup = new THREE.Group();
+
+            // Main Transformer Body Core Tank
+            const coreGeo = new THREE.BoxGeometry(8, 7, 5);
+            const coreMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.3, metalness: 0.8 });
+            const coreMesh = new THREE.Mesh(coreGeo, coreMat);
+            transformerGroup.add(coreMesh);
+
+            // Radiator Fins on left/right sides
+            for (let i = -3.2; i <= 3.2; i += 1.6) {
+                const finGeo = new THREE.BoxGeometry(0.3, 6, 6.5);
+                const finMat = new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.6 });
+                
+                const finLeft = new THREE.Mesh(finGeo, finMat);
+                finLeft.position.set(-4.3, 0, i);
+                transformerGroup.add(finLeft);
+
+                const finRight = new THREE.Mesh(finGeo, finMat);
+                finRight.position.set(4.3, 0, i);
+                transformerGroup.add(finRight);
+            }
+
+            // High Voltage Ceramic Bushing Insulators on top
+            for (let i = -2; i <= 2; i += 2) {
+                const bushingBase = new THREE.CylinderGeometry(0.4, 0.5, 3.5, 12);
+                const bushingMat = new THREE.MeshStandardMaterial({ color: 0x0284c7, roughness: 0.2 });
+                const bushing = new THREE.Mesh(bushingBase, bushingMat);
+                bushing.position.set(i, 5.2, 0);
+                transformerGroup.add(bushing);
+            }
+
+            twinScene.add(transformerGroup);
+
+            // 3D Point Cloud Representation
+            const ptsGeo = new THREE.BufferGeometry();
+            const numPts = 3200;
+            const ptsPos = new Float32Array(numPts * 3);
+
+            for (let i = 0; i < numPts * 3; i += 3) {
+                ptsPos[i] = (Math.random() - 0.5) * 11;
+                ptsPos[i + 1] = (Math.random() - 0.5) * 9;
+                ptsPos[i + 2] = (Math.random() - 0.5) * 8;
+            }
+            ptsGeo.setAttribute('position', new THREE.BufferAttribute(ptsPos, 3));
+            const ptsMat = new THREE.PointsMaterial({ size: 0.15, color: 0x00f0ff, transparent: true, opacity: 0.5 });
+            pointCloudMesh = new THREE.Points(ptsGeo, ptsMat);
+            transformerGroup.add(pointCloudMesh);
+
+            // AI Thermal Heatmap Mesh Overlay
+            const heatmapGeo = new THREE.BoxGeometry(8.2, 7.2, 5.2);
+            const heatmapMat = new THREE.MeshBasicMaterial({ color: 0xff3300, wireframe: true, transparent: true, opacity: 0.0 });
+            heatmapMesh = new THREE.Mesh(heatmapGeo, heatmapMat);
+            transformerGroup.add(heatmapMesh);
+
+            // SIFT Feature Nodes Overlay
+            siftPointsGroup = new THREE.Group();
+            for (let i = 0; i < 22; i++) {
+                const sphereGeo = new THREE.SphereGeometry(0.25, 8, 8);
+                const sphereMat = new THREE.MeshBasicMaterial({ color: 0xa855f7 });
+                const sphere = new THREE.Mesh(sphereGeo, sphereMat);
+                sphere.position.set(
+                    (Math.random() - 0.5) * 9,
+                    (Math.random() - 0.5) * 7,
+                    (Math.random() - 0.5) * 6
+                );
+                siftPointsGroup.add(sphere);
+            }
+            siftPointsGroup.visible = false;
+            transformerGroup.add(siftPointsGroup);
+
+            // Mouse orbit controls physics
+            let isDragging = false;
+            let previousMousePosition = { x: 0, y: 0 };
+
+            canvas.addEventListener('mousedown', () => { isDragging = true; });
+            canvas.addEventListener('mousemove', (e) => {
+                if (isDragging) {
+                    const deltaMove = {
+                        x: e.clientX - previousMousePosition.x,
+                        y: e.clientY - previousMousePosition.y
+                    };
+                    transformerGroup.rotation.y += deltaMove.x * 0.01;
+                    transformerGroup.rotation.x += deltaMove.y * 0.01;
+                }
+                previousMousePosition = { x: e.clientX, y: e.clientY };
+            });
+            window.addEventListener('mouseup', () => { isDragging = false; });
+
+            function animateTwin() {
+                requestAnimationFrame(animateTwin);
+                if (isAutoRotating && !isDragging) {
+                    transformerGroup.rotation.y += 0.005;
+                }
+                twinRenderer.render(twinScene, twinCamera);
+            }
+            animateTwin();
+
+            window.addEventListener('resize', () => {
+                twinCamera.aspect = canvas.clientWidth / canvas.clientHeight;
+                twinCamera.updateProjectionMatrix();
+                twinRenderer.setSize(canvas.clientWidth, canvas.clientHeight);
+            });
+        }
+
+        document.getElementById('btn-rotate').addEventListener('click', function() {
+            isAutoRotating = !isAutoRotating;
+            showToast(`Auto-Rotate: ${isAutoRotating ? 'ENABLED' : 'DISABLED'}`);
+        });
+
+        document.getElementById('btn-wireframe').addEventListener('click', function() {
+            isWireframe = !isWireframe;
+            transformerGroup.children.forEach(child => {
+                if (child.material && child !== heatmapMesh) {
+                    child.material.wireframe = isWireframe;
+                }
+            });
+            showToast(`Wireframe View: ${isWireframe ? 'ACTIVE' : 'INACTIVE'}`);
+        });
+
+        document.getElementById('btn-heatmap').addEventListener('click', function() {
+            isHeatmapActive = !isHeatmapActive;
+            heatmapMesh.material.opacity = isHeatmapActive ? 0.7 : 0.0;
+            showToast(`AI Thermal Heatmap: ${isHeatmapActive ? 'VISIBLE' : 'HIDDEN'}`);
+        });
+
+        document.getElementById('btn-points').addEventListener('click', function() {
+            isPointsActive = !isPointsActive;
+            siftPointsGroup.visible = isPointsActive;
+            showToast(`SIFT Nodes: ${isPointsActive ? 'DISPLAYED' : 'HIDDEN'}`);
+        });
+
+        document.getElementById('btn-run-audit').addEventListener('click', function() {
+            document.getElementById('ai-audit-result').classList.remove('hidden');
+            showToast("Generating AI Equipment Diagnostic Report...");
+        });
+
+        // Pipeline Step Info Data
+        const pipelineData = {
+            1: { title: "01. Multi-View Image Acquisition", body: "Overlapping RGB images captured from multi-angle orientations covering equipment exterior." },
+            2: { title: "02. Preprocessing & SIFT Feature Extract", body: "OpenCV SIFT algorithm identifies high-contrast keypoints and scale-invariant descriptors." },
+            3: { title: "03. COLMAP Photogrammetry", body: "COLMAP Structure-from-Motion solves camera extrinsic poses and reconstructs dense point clouds." },
+            4: { title: "04. Open3D Mesh & AI Diagnostics", body: "Poisson surface meshing generates 3D spatial models; thermal AI evaluates structural integrity." }
+        };
+
+        function showPipelineModal(step) {
+            const modal = document.getElementById('pipeline-modal');
+            const content = document.getElementById('pipeline-modal-content');
+            const data = pipelineData[step];
+
+            content.innerHTML = `
+                <h3 class="text-lg font-bold text-white">${data.title}</h3>
+                <p class="text-xs text-slate-300 leading-relaxed">${data.body}</p>
+            `;
+            modal.classList.remove('hidden');
+        }
+
+        function hidePipelineModal() {
+            document.getElementById('pipeline-modal').classList.add('hidden');
+        }
+
+        let lockState = 'locked';
+        const audioCanvas = document.getElementById('audio-wave-canvas');
+        const audioCtx = audioCanvas.getContext('2d');
+
+        function drawWaveform(intensity = 1.0) {
+            const width = audioCanvas.width = audioCanvas.clientWidth;
+            const height = audioCanvas.height = audioCanvas.clientHeight;
+
+            audioCtx.clearRect(0, 0, width, height);
+            audioCtx.beginPath();
+            audioCtx.lineWidth = 2;
+            audioCtx.strokeStyle = lockState === 'unlocked' ? '#10b981' : '#ffb703';
+
+            for (let x = 0; x < width; x++) {
+                const y = height / 2 + Math.sin(x * 0.08) * (Math.random() * 18 * intensity);
+                if (x === 0) audioCtx.moveTo(x, y);
+                else audioCtx.lineTo(x, y);
+            }
+            audioCtx.stroke();
+        }
+
+        document.getElementById('tap-sound-btn').addEventListener('click', function() {
+            document.getElementById('wave-placeholder').style.display = 'none';
+            drawWaveform(2.5);
+            simulateSecretKnock('correct');
+        });
+
+        function simulateSecretKnock(type) {
+            document.getElementById('wave-placeholder').style.display = 'none';
+            const badge = document.getElementById('lock-badge');
+            const log = document.getElementById('esp32-log');
+            const servoText = document.getElementById('servo-angle-text');
+
+            if (type === 'correct') {
+                lockState = 'unlocked';
+                drawWaveform(3.0);
+                badge.className = "px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-xs font-mono font-bold flex items-center gap-1.5";
+                badge.innerHTML = `<i class="fa-solid fa-lock-open"></i> UNLOCKED (90°)`;
+                log.innerText = "Pattern Matched! ESP32 Servo Actuated.";
+                servoText.innerText = "90° (UNLOCKED)";
+                servoText.className = "text-emerald-400 font-bold";
+                showToast("ESP32 Door Unlock Actuated!");
+            } else {
+                lockState = 'locked';
+                drawWaveform(0.5);
+                badge.className = "px-3 py-1 rounded-full bg-red-500/20 text-red-400 border border-red-500/40 text-xs font-mono font-bold flex items-center gap-1.5";
+                badge.innerHTML = `<i class="fa-solid fa-lock"></i> DENIED (0°)`;
+                log.innerText = "Audio Sequence Interval Mismatch.";
+                servoText.innerText = "0° (LOCKED)";
+                servoText.className = "text-red-400 font-bold";
+                showToast("Access Denied: Rhythm Mismatch.");
+            }
+        }
+
+        function resetDoorLock() {
+            lockState = 'locked';
+            document.getElementById('lock-badge').className = "px-3 py-1 rounded-full bg-red-500/20 text-red-400 border border-red-500/40 text-xs font-mono font-bold flex items-center gap-1.5";
+            document.getElementById('lock-badge').innerHTML = `<i class="fa-solid fa-lock"></i> LOCKED (0°)`;
+            document.getElementById('esp32-log').innerText = "Sensor reset. Waiting for sound...";
+            document.getElementById('servo-angle-text').innerText = "0° (LOCKED)";
+            document.getElementById('wave-placeholder').style.display = 'block';
+            audioCtx.clearRect(0, 0, audioCanvas.width, audioCanvas.height);
         }
 
         const terminalHistory = document.getElementById('terminal-history');
@@ -901,281 +1362,6 @@
                 terminalInput.value = '';
             }
         });
-
-        function initHeroCanvas() {
-            const canvas = document.getElementById('hero-canvas');
-            if (!canvas) return;
-
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            camera.position.z = 30;
-
-            const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-            renderer.setSize(canvas.clientWidth, canvas.clientHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-            const particlesGeometry = new THREE.BufferGeometry();
-            const particleCount = 200;
-            const posArray = new Float32Array(particleCount * 3);
-
-            for (let i = 0; i < particleCount * 3; i++) {
-                posArray[i] = (Math.random() - 0.5) * 80;
-            }
-
-            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-            const particlesMaterial = new THREE.PointsMaterial({
-                size: 0.35,
-                color: 0x00f2fe,
-                transparent: true,
-                opacity: 0.6
-            });
-
-            const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
-            scene.add(particlesMesh);
-
-            function animate() {
-                requestAnimationFrame(animate);
-                particlesMesh.rotation.y += 0.0008;
-                renderer.render(scene, camera);
-            }
-            animate();
-        }
-
-        let twinScene, twinCamera, twinRenderer, transformerGroup, pointCloudMesh, heatmapMesh, siftPointsGroup;
-        let isAutoRotating = true;
-        let isWireframe = false;
-        let isHeatmapActive = false;
-        let isPointsActive = false;
-
-        function initDigitalTwinViewer() {
-            const canvas = document.getElementById('twin-canvas');
-            if (!canvas) return;
-
-            twinScene = new THREE.Scene();
-            twinCamera = new THREE.PerspectiveCamera(50, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
-            twinCamera.position.set(18, 14, 22);
-            twinCamera.lookAt(0, 0, 0);
-
-            twinRenderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-            twinRenderer.setSize(canvas.clientWidth, canvas.clientHeight);
-            twinRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
-            twinScene.add(ambientLight);
-
-            const dirLight1 = new THREE.DirectionalLight(0x00f2fe, 1.2);
-            dirLight1.position.set(20, 30, 20);
-            twinScene.add(dirLight1);
-
-            transformerGroup = new THREE.Group();
-
-            const coreGeo = new THREE.BoxGeometry(8, 7, 5);
-            const coreMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.3, metalness: 0.8 });
-            const coreMesh = new THREE.Mesh(coreGeo, coreMat);
-            transformerGroup.add(coreMesh);
-
-            for (let i = -3.2; i <= 3.2; i += 1.6) {
-                const finGeo = new THREE.BoxGeometry(0.3, 6, 6.5);
-                const finMat = new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.6 });
-                
-                const finLeft = new THREE.Mesh(finGeo, finMat);
-                finLeft.position.set(-4.3, 0, i);
-                transformerGroup.add(finLeft);
-
-                const finRight = new THREE.Mesh(finGeo, finMat);
-                finRight.position.set(4.3, 0, i);
-                transformerGroup.add(finRight);
-            }
-
-            for (let i = -2; i <= 2; i += 2) {
-                const bushingBase = new THREE.CylinderGeometry(0.4, 0.5, 3.5, 12);
-                const bushingMat = new THREE.MeshStandardMaterial({ color: 0x0284c7, roughness: 0.2 });
-                const bushing = new THREE.Mesh(bushingBase, bushingMat);
-                bushing.position.set(i, 5.2, 0);
-                transformerGroup.add(bushing);
-            }
-
-            twinScene.add(transformerGroup);
-
-            const ptsGeo = new THREE.BufferGeometry();
-            const numPts = 3000;
-            const ptsPos = new Float32Array(numPts * 3);
-
-            for (let i = 0; i < numPts * 3; i += 3) {
-                ptsPos[i] = (Math.random() - 0.5) * 11;
-                ptsPos[i + 1] = (Math.random() - 0.5) * 9;
-                ptsPos[i + 2] = (Math.random() - 0.5) * 8;
-            }
-            ptsGeo.setAttribute('position', new THREE.BufferAttribute(ptsPos, 3));
-            const ptsMat = new THREE.PointsMaterial({ size: 0.15, color: 0x00f2fe, transparent: true, opacity: 0.5 });
-            pointCloudMesh = new THREE.Points(ptsGeo, ptsMat);
-            transformerGroup.add(pointCloudMesh);
-
-            const heatmapGeo = new THREE.BoxGeometry(8.2, 7.2, 5.2);
-            const heatmapMat = new THREE.MeshBasicMaterial({ color: 0xff3300, wireframe: true, transparent: true, opacity: 0.0 });
-            heatmapMesh = new THREE.Mesh(heatmapGeo, heatmapMat);
-            transformerGroup.add(heatmapMesh);
-
-            siftPointsGroup = new THREE.Group();
-            for (let i = 0; i < 20; i++) {
-                const sphereGeo = new THREE.SphereGeometry(0.25, 8, 8);
-                const sphereMat = new THREE.MeshBasicMaterial({ color: 0xa855f7 });
-                const sphere = new THREE.Mesh(sphereGeo, sphereMat);
-                sphere.position.set(
-                    (Math.random() - 0.5) * 9,
-                    (Math.random() - 0.5) * 7,
-                    (Math.random() - 0.5) * 6
-                );
-                siftPointsGroup.add(sphere);
-            }
-            siftPointsGroup.visible = false;
-            transformerGroup.add(siftPointsGroup);
-
-            let isDragging = false;
-            let previousMousePosition = { x: 0, y: 0 };
-
-            canvas.addEventListener('mousedown', () => { isDragging = true; });
-            canvas.addEventListener('mousemove', (e) => {
-                if (isDragging) {
-                    const deltaMove = {
-                        x: e.clientX - previousMousePosition.x,
-                        y: e.clientY - previousMousePosition.y
-                    };
-                    transformerGroup.rotation.y += deltaMove.x * 0.01;
-                    transformerGroup.rotation.x += deltaMove.y * 0.01;
-                }
-                previousMousePosition = { x: e.clientX, y: e.clientY };
-            });
-            window.addEventListener('mouseup', () => { isDragging = false; });
-
-            function animateTwin() {
-                requestAnimationFrame(animateTwin);
-                if (isAutoRotating && !isDragging) {
-                    transformerGroup.rotation.y += 0.005;
-                }
-                twinRenderer.render(twinScene, twinCamera);
-            }
-            animateTwin();
-        }
-
-        document.getElementById('btn-rotate').addEventListener('click', function() {
-            isAutoRotating = !isAutoRotating;
-            showToast(`Auto-Rotate: ${isAutoRotating ? 'ENABLED' : 'DISABLED'}`);
-        });
-
-        document.getElementById('btn-wireframe').addEventListener('click', function() {
-            isWireframe = !isWireframe;
-            transformerGroup.children.forEach(child => {
-                if (child.material && child !== heatmapMesh) {
-                    child.material.wireframe = isWireframe;
-                }
-            });
-            showToast(`Wireframe View: ${isWireframe ? 'ACTIVE' : 'INACTIVE'}`);
-        });
-
-        document.getElementById('btn-heatmap').addEventListener('click', function() {
-            isHeatmapActive = !isHeatmapActive;
-            heatmapMesh.material.opacity = isHeatmapActive ? 0.7 : 0.0;
-            showToast(`AI Thermal Heatmap: ${isHeatmapActive ? 'VISIBLE' : 'HIDDEN'}`);
-        });
-
-        document.getElementById('btn-points').addEventListener('click', function() {
-            isPointsActive = !isPointsActive;
-            siftPointsGroup.visible = isPointsActive;
-            showToast(`SIFT Nodes: ${isPointsActive ? 'DISPLAYED' : 'HIDDEN'}`);
-        });
-
-        document.getElementById('btn-run-audit').addEventListener('click', function() {
-            document.getElementById('ai-audit-result').classList.remove('hidden');
-            showToast("Running AI Photogrammetric Inspection...");
-        });
-
-        const pipelineData = {
-            1: { title: "01. Multi-View Image Acquisition", body: "Multiple overlapping RGB images captured from structured angles for spatial resolution." },
-            2: { title: "02. Preprocessing & SIFT Features", body: "Scale-Invariant Feature Transform keypoints extracted via OpenCV." },
-            3: { title: "03. COLMAP Photogrammetry", body: "COLMAP executes Structure-from-Motion (SfM) to solve camera poses & triangulation." },
-            4: { title: "04. Open3D Mesh & AI Diagnostics", body: "Open3D performs Poisson surface reconstruction to form a 3D twin mesh." }
-        };
-
-        function showPipelineModal(step) {
-            const modal = document.getElementById('pipeline-modal');
-            const content = document.getElementById('pipeline-modal-content');
-            const data = pipelineData[step];
-
-            content.innerHTML = `
-                <h3 class="text-lg font-bold text-white">${data.title}</h3>
-                <p class="text-xs text-slate-300 leading-relaxed">${data.body}</p>
-            `;
-            modal.classList.remove('hidden');
-        }
-
-        function hidePipelineModal() {
-            document.getElementById('pipeline-modal').classList.add('hidden');
-        }
-
-        let lockState = 'locked';
-        const audioCanvas = document.getElementById('audio-wave-canvas');
-        const audioCtx = audioCanvas.getContext('2d');
-
-        function drawWaveform(intensity = 1.0) {
-            const width = audioCanvas.width = audioCanvas.clientWidth;
-            const height = audioCanvas.height = audioCanvas.clientHeight;
-
-            audioCtx.clearRect(0, 0, width, height);
-            audioCtx.beginPath();
-            audioCtx.lineWidth = 2;
-            audioCtx.strokeStyle = lockState === 'unlocked' ? '#10b981' : '#f59e0b';
-
-            for (let x = 0; x < width; x++) {
-                const y = height / 2 + Math.sin(x * 0.08) * (Math.random() * 18 * intensity);
-                if (x === 0) audioCtx.moveTo(x, y);
-                else audioCtx.lineTo(x, y);
-            }
-            audioCtx.stroke();
-        }
-
-        document.getElementById('tap-sound-btn').addEventListener('click', function() {
-            document.getElementById('wave-placeholder').style.display = 'none';
-            drawWaveform(2.5);
-            simulateSecretKnock('correct');
-        });
-
-        function simulateSecretKnock(type) {
-            document.getElementById('wave-placeholder').style.display = 'none';
-            const badge = document.getElementById('lock-badge');
-            const log = document.getElementById('esp32-log');
-            const servoText = document.getElementById('servo-angle-text');
-
-            if (type === 'correct') {
-                lockState = 'unlocked';
-                drawWaveform(3.0);
-                badge.className = "px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-xs font-mono font-bold flex items-center gap-1.5";
-                badge.innerHTML = `<i class="fa-solid fa-lock-open"></i> UNLOCKED (90°)`;
-                log.innerText = "Pattern Matched! ESP32 Servo Actuated.";
-                servoText.innerText = "90° (UNLOCKED)";
-                servoText.className = "text-emerald-400 font-bold";
-                showToast("ESP32 Door Unlock Triggered!");
-            } else {
-                lockState = 'locked';
-                drawWaveform(0.5);
-                badge.className = "px-3 py-1 rounded-full bg-red-500/20 text-red-400 border border-red-500/40 text-xs font-mono font-bold flex items-center gap-1.5";
-                badge.innerHTML = `<i class="fa-solid fa-lock"></i> DENIED (0°)`;
-                log.innerText = "Audio Sequence Interval Mismatch.";
-                servoText.innerText = "0° (LOCKED)";
-                servoText.className = "text-red-400 font-bold";
-                showToast("Access Denied: Rhythm Mismatch.");
-            }
-        }
-
-        function resetDoorLock() {
-            lockState = 'locked';
-            document.getElementById('lock-badge').className = "px-3 py-1 rounded-full bg-red-500/20 text-red-400 border border-red-500/40 text-xs font-mono font-bold flex items-center gap-1.5";
-            document.getElementById('lock-badge').innerHTML = `<i class="fa-solid fa-lock"></i> LOCKED (0°)`;
-            document.getElementById('esp32-log').innerText = "Sensor reset. Waiting for sound...";
-            document.getElementById('servo-angle-text').innerText = "0° (LOCKED)";
-            document.getElementById('wave-placeholder').style.display = 'block';
-            audioCtx.clearRect(0, 0, audioCanvas.width, audioCanvas.height);
-        }
 
         function filterSkills(cat) {
             const cards = document.querySelectorAll('.skill-card');
